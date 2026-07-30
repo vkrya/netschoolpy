@@ -10,7 +10,7 @@ readme = "README.md"
 license = "GPL-3.0-only"
 requires-python = ">=3.10"
 authors = [
-    { name = "Vladcom4iiik" },
+    { name = "vkrya" },
 ]
 keywords = [
     "netschool", "netschoolpy", "sgo",
