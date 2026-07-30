@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netschoolpy"
+version = "7.1.2"
+description = "Асинхронный клиент для «Сетевого города»"
+readme = "README.md"
+license = "GPL-3.0-only"
+requires-python = ">=3.10"
+authors = [
+    { name = "Vladcom4iiik" },
+]
+keywords = [
+    "netschool", "netschoolpy", "sgo",
+    "сетевой город", "дневник", "госуслуги", "esia",
+    "education", "api", "web Education", "ir-tech",
+    "электронный журнал", "school", "web2edu", "region",
+]
+classifiers = [
+    "Natural Language :: Russian",
+    "Topic :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.23",
+    "websockets>=12.0",
+]
+
+[project.optional-dependencies]
+qr = ["qrcode>=7.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "ruff>=0.4",
+    "mypy>=1.0",
+]
+
+[project.urls]
+Source = "https://github.com/vkrya/netschoolpy"
+Issues = "https://github.com/vkrya/netschoolpy/issues"
+Documentation = "https://github.com/vkrya/netschoolpy/tree/main/docs"
+
+[tool.setuptools.packages.find]
+include = ["netschoolpy*"]
+
+[tool.setuptools.package-data]
+netschoolpy = ["py.typed"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "N", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
