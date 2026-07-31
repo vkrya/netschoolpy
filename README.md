@@ -1,6 +1,6 @@
 # netschoolpy
 
-[![CI](https://github.com/Vladcom4iiik/netschoolpy/actions/workflows/ci.yml/badge.svg)](https://github.com/Vladcom4iiik/netschoolpy/actions)
+[![CI](https://github.com/vkrya/netschoolpy/actions/workflows/ci.yml/badge.svg)](https://github.com/vkrya/netschoolpy/actions)
 [![PyPI](https://img.shields.io/pypi/v/netschoolpy)](https://pypi.org/project/netschoolpy/)
 [![Python](https://img.shields.io/pypi/pyversions/netschoolpy)](https://pypi.org/project/netschoolpy/)
 
