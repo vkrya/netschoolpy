@@ -1,0 +1,10 @@
+netschoolpy/__init__.py,sha256=gNb2eETFNNfDr5-p_oAt9ULyBGzukTvwFvT_dD3icxI,156
+netschoolpy/client.py,sha256=WjmrJn-NWsFPfDpjCnxYd7vS5jqRcsKKGCypvVsrlUg,53161
+netschoolpy/exceptions.py,sha256=Nz7h4nL5J6Ero1T-F6WyUCbV2gVWHX_zzgJNDMYFXUw,518
+netschoolpy/http.py,sha256=f1QmM4YNBeFGJCG4OB5DCNfCRYmRCui119zAlCfQyUM,4342
+netschoolpy/models.py,sha256=ry3QJyO7cCSFOSQfAJfAY5Z3nD9GWvQQN8miPvLYHfY,8404
+netschoolpy-1.0.0.dist-info/licenses/LICENSE,sha256=BajiPHjuVRxPYBQLgX_9brM_uyzOVTcdcjPhusjAYJU,2076
+netschoolpy-1.0.0.dist-info/METADATA,sha256=93D21lOnsLlYHapybwaXitopmkv_kG7YrUug6675Vvw,5871
+netschoolpy-1.0.0.dist-info/WHEEL,sha256=YCfwYGOYMi5Jhw2fU4yNgwErybb2IX5PEwBKV4ZbdBo,91
+netschoolpy-1.0.0.dist-info/top_level.txt,sha256=kfdGKT_Hxs45n99FGzajZsHZdWpDTBRTgZL2W3Kv-og,12
+netschoolpy-1.0.0.dist-info/RECORD,,

@@ -1,0 +1,12 @@
+netschoolpy/__init__.py,sha256=Yl57qY452Ay_gYWQACd3C5wUOm-CB1tHCXZ_yU5E6vM,721
+netschoolpy/client.py,sha256=6NDB0uj78rPzUOtGI9blaNK-MJy5LT8tjLBRQ6bYkFI,75927
+netschoolpy/exceptions.py,sha256=Dxskd78Ie4KZbUf4snD4pyFow0uConXtrZ39DYq51so,1016
+netschoolpy/http.py,sha256=dzFXwEG_twib77A9u1-Cl_J05m3oV669NaWriDWK2K0,7784
+netschoolpy/models.py,sha256=kujlaiqLDsfAvszbHy3eMKIIU7EquRa_qjQEuu9cHeM,16414
+netschoolpy/py.typed,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+netschoolpy/regions.py,sha256=Yky3_WGt3puRIABCJOqEujRzIP6lLeb1SmYmPD--xoA,4046
+netschoolpy-3.3.2.dist-info/licenses/LICENSE,sha256=uQMLD6VevQ-Cjp7kO7Ck1enGD6FoBVRbJIKXNx3Hj_E,33951
+netschoolpy-3.3.2.dist-info/METADATA,sha256=a9Heqr1HI1-kKW_WLqvktKZlmKnNlAEdCzS-6Eu8nUU,9962
+netschoolpy-3.3.2.dist-info/WHEEL,sha256=YCfwYGOYMi5Jhw2fU4yNgwErybb2IX5PEwBKV4ZbdBo,91
+netschoolpy-3.3.2.dist-info/top_level.txt,sha256=kfdGKT_Hxs45n99FGzajZsHZdWpDTBRTgZL2W3Kv-og,12
+netschoolpy-3.3.2.dist-info/RECORD,,
