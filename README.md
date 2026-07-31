@@ -6,7 +6,7 @@
 
 Асинхронный клиент для «Сетевого города». Дневник, оценки, домашние задания, объявления — всё программно, без браузера.
 
-Репозиторий: https://github.com/Vladcom4iiik/netschoolpy
+Репозиторий: https://github.com/vkrya/netschoolpy
 
 [Поддержать проект (ЮMoney)](https://yoomoney.ru/to/4100118867747459)
 
@@ -205,5 +205,5 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## Лицензия
 
-© 2026 Vladcom4iiik.
+© 2026 vkrya.
 GNU GPLv3. Подробнее — [LICENSE](LICENSE).

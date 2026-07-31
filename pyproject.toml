@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "netschoolpy"
-version = "7.1.3"
-description = "Асинхронный клиент для «Сетевого города»"
+version = "8.0.1"
+description = "Асинхронный клиент для «Сетевого города» с поддержкой ЕСИА/Госуслуг, Pydantic v2, SignalR и CLI"
 readme = "README.md"
-license = "GPL-3.0-only"
+license = { text = "GPL-3.0-only" }
 requires-python = ">=3.10"
 authors = [
     { name = "vkrya" },
@@ -17,6 +17,7 @@ keywords = [
     "сетевой город", "дневник", "госуслуги", "esia",
     "education", "api", "web Education", "ir-tech",
     "электронный журнал", "school", "web2edu", "region",
+    "pydantic", "signalr"
 ]
 classifiers = [
     "Natural Language :: Russian",
@@ -30,11 +31,14 @@ classifiers = [
 ]
 dependencies = [
     "httpx>=0.23",
+    "pydantic>=2.0",
     "websockets>=12.0",
 ]
 
 [project.optional-dependencies]
 qr = ["qrcode>=7.0"]
+ical = ["icalendar>=5.0.0"]
+cli = ["rich>=13.0.0", "typer>=0.9.0"]
 dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.21",
@@ -47,25 +51,14 @@ Source = "https://github.com/vkrya/netschoolpy"
 Issues = "https://github.com/vkrya/netschoolpy/issues"
 Documentation = "https://github.com/vkrya/netschoolpy/tree/main/docs"
 
+[project.scripts]
+netschoolpy = "netschoolpy.cli:main"
+
 [tool.setuptools.packages.find]
 include = ["netschoolpy*"]
 
 [tool.setuptools.package-data]
 netschoolpy = ["py.typed"]
-
-[tool.ruff]
-target-version = "py310"
-line-length = 88
-
-[tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "N", "B"]
-ignore = ["E501"]
-
-[tool.mypy]
-python_version = "3.10"
-strict = true
-warn_return_any = true
-warn_unused_configs = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

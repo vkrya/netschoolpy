@@ -72,8 +72,21 @@ class NetSchool:
             diary = await ns.diary()
     """
 
-    def __init__(self, url: str, *, timeout: int | None = None,
-                 proxy: str | None = None):
+    def __init__(
+        self,
+        url: str,
+        *,
+        timeout: int | None = None,
+        proxy: str | None = None,
+        auto_relogin: bool = False,
+        cache_ttl: float = 3600.0,
+    ) -> None:
+        from netschoolpy.cache import TTLCache
+        self._http = HttpSession(url, timeout=timeout, proxy=proxy)
+        self._proxy = proxy
+        self._auto_relogin = auto_relogin
+        self._cache = TTLCache(default_ttl=cache_ttl)
+        self._last_login_args: dict | None = None
         """
         :param url: URL сервера Сетевой Город.
         :param timeout: Таймаут HTTP-запросов в секундах.
