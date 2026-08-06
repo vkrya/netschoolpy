@@ -1,0 +1,73 @@
+name: Python CI Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies & Check Syntax
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m py_compile $(git ls-files '*.py')
+
+      - name: 🤖 AI Verdict & Telegram Notification
+        if: always()
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY || secrets.WEATMOOD_API_KEY }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          MY_TG_USER_ID: ${{ secrets.MY_TG_USER_ID }}
+          JOB_STATUS: ${{ job.status }}
+          REPO_NAME: ${{ github.repository }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          python3 -c "
+          import os, requests
+
+          status = os.getenv('JOB_STATUS')
+          repo = os.getenv('REPO_NAME')
+          full_commit = os.getenv('COMMIT_MSG', '').strip()
+          commit_title = full_commit.split('\n')[0][:90] if full_commit else 'без коммита'
+
+          ai_key = os.getenv('AI_API_KEY')
+          bot_token = os.getenv('BOT_TOKEN')
+          my_id = os.getenv('MY_TG_USER_ID')
+
+          if not bot_token or not my_id:
+              print('Telegram credentials missing, skipping notification.')
+              exit(0)
+
+          if status == 'success':
+              msg = f'✅ <b>[Сборка/Проверка Успешна]</b>\n📌 <code>{repo}</code>\n📝 <i>{commit_title}</i>\n🚀 Код проверен и готов к использованию!'
+          else:
+              prompt = f'Сборка Python проекта {repo} упала (коммит: {commit_title}). Сформулируй вердикт ОЧЕНЬ КРАТКО (1-2 коротких предложения на русском).'
+              ai_text = 'Ошибка синтаксиса или зависимостей в Python коде.'
+              if ai_key:
+                  try:
+                      res = requests.post(
+                          'https://api.villnus.tech/v1/chat/completions',
+                          headers={'Authorization': f'Bearer {ai_key}'},
+                          json={'model': 'deepseek-v4-pro', 'messages': [{'role': 'user', 'content': prompt}], 'max_tokens': 120},
+                          timeout=15
+                      ).json()
+                      ai_text = res['choices'][0]['message']['content'].strip()
+                  except Exception as e:
+                      print(f'AI error: {e}')
+
+              msg = f'❌ <b>[Сборка Python Упала!]</b>\n📌 <code>{repo}</code>\n📝 <i>{commit_title}</i>\n\n🤖 <b>Вердикт:</b> {ai_text}'
+
+          requests.post(f'https://api.telegram.org/bot{bot_token}/sendMessage', json={'chat_id': my_id, 'text': msg, 'parse_mode': 'HTML'})
+          "
